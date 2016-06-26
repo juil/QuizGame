@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/quiz_margin"
+    tools:context="com.juilyoon.animequiz.QuizActivity">
+
+    <LinearLayout
+        android:id="@+id/question_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/question_number"
+            style="@style/QuestionNum"
+            android:text="Question 1:"/>
+        <TextView
+            android:id="@+id/question_text"
+            style="@style/QuestionText"
+            android:text="This is a question?"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/next_button"
+        style="@style/NextButton"
+        android:text="@string/next"/>
+    // Multiple Choice (One Correct Answer) Layer
+    <RadioGroup
+        android:id="@+id/multiple_choice_single"
+        style="@style/AnswerOptions"
+        android:visibility="visible">
+        <RadioButton
+            android:id="@+id/option1"
+            style="@style/Choice"
+            android:text="A. Yes it is."/>
+        <RadioButton
+            android:id="@+id/option2"
+            style="@style/Choice"
+            android:text="B. Maybe."/>
+        <RadioButton
+            android:id="@+id/option3"
+            style="@style/Choice"
+            android:text="C. No"/>
+        <RadioButton
+            android:id="@+id/option4"
+            style="@style/Choice"
+            android:text="D. I don't know"/>
+    </RadioGroup>
+    <LinearLayout
+        style="@style/AnswerOptions"
+        android:visibility="gone">
+
+    </LinearLayout>
+</RelativeLayout>
