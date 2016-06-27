@@ -5,18 +5,23 @@ package com.juilyoon.quiz;
  */
 public class Question {
     private String question;
-    private String answer;
+    private String[] answers;
 
-    public Question(String q, String a) {
-        question = q;
-        answer = a;
+    /**
+     * Constructor for Question class.
+     * @param question
+     * @param answers All possible answers to question.
+     */
+    public Question(String question, String[] answers) {
+        this.question = question;
+        this.answers = answers;
     }
 
     public String getQuestion() {
         return question;
     }
 
-    public String getAnswer() {
-        return answer;
+    public String[] getAnswers() {
+        return answers;
     }
 }
