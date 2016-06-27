@@ -24,4 +24,8 @@ public class Question {
     public String[] getAnswers() {
         return answers;
     }
+
+    public boolean isCorrect(String guess) {
+        return true;
+    }
 }

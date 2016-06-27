@@ -4,7 +4,7 @@ package com.juilyoon.quiz;
  * Created by juil on 16-06-27.
  */
 public class SingleMultipleChoice extends MultipleChoice {
-    private int correctAnswer;
+    private String correctAnswer;
 
     /**
      *
@@ -13,12 +13,21 @@ public class SingleMultipleChoice extends MultipleChoice {
      * @param options Alwayy 4 options
      * @param correctAnswer
      */
-    public SingleMultipleChoice(String question, String[] answer, String[] options, int correctAnswer) {
+    public SingleMultipleChoice(String question, String[] answer, String[] options, String correctAnswer) {
         super(question, answer, options);
         this.correctAnswer = correctAnswer;
     }
 
-    public int getCorrectAnswer() {
+    public String getCorrectAnswer() {
         return correctAnswer;
+    }
+
+    public boolean isCorrect(String guess) {
+        if (guess.equals(correctAnswer)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
