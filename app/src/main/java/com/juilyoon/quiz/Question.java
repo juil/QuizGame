@@ -1,11 +1,14 @@
 package com.juilyoon.quiz;
 
+import java.util.ArrayList;
+
 /**
  * Created by juil on 16-06-27.
  */
 public class Question {
-    private String question;
-    private String[] answers;
+    protected String question;
+    protected String[] answers;
+    protected ArrayList<String> answerList;
 
     /**
      * Constructor for Question class.
@@ -25,7 +28,13 @@ public class Question {
         return answers;
     }
 
+    /**
+     * isCorrect() checks to see if guess is correct
+     * #TODO: check for all cases and iterations
+     * @param guess
+     * @return
+     */
     public boolean isCorrect(String guess) {
-        return true;
+        return answerList.contains(guess);
     }
 }

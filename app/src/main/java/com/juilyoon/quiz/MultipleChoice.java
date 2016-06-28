@@ -1,19 +1,17 @@
 package com.juilyoon.quiz;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by juil on 16-06-27.
  */
 public class MultipleChoice extends Question{
-    private String[] options = new String[4];
+    protected String[] options = new String[4];
+    protected ArrayList<String> optionList;
 
-    /**
-     *
-     * @param question
-     * @param answer
-     * @param options Always 4 options per question
-     */
-    public MultipleChoice(String question, String[] answer, String[] options) {
-        super(question, answer);
+    public MultipleChoice(String question, String[] answers, String[] options) {
+        super(question, answers);
         this.options = options;
     }
 
