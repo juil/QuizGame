@@ -18,4 +18,24 @@ public class MultipleChoice extends Question{
     public String[] getOptions() {
         return options;
     }
+
+    /**
+     * isCorrect checks if all answers are in guess, no more no less.
+     * @param guess Array of strings selected by player
+     * @return
+     */
+    public boolean isCorrect(String[] guess) {
+        // Check that guess is no more and no less than correctAnswers; catches 0 guess case
+        if (guess.length == answers.length) {
+            for (int i=0; i < answers.length; i++){
+                if (!answerList.contains(guess[i])) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
