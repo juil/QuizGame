@@ -6,11 +6,12 @@ package com.juilyoon.quiz;
 public class Quiz {
     private Question[] questions;
     private int questionNumber;
-    private boolean[] correctGuess = new boolean[length()];
+    private boolean[] correctGuess;
 
     public Quiz(Question[] questions) {
         this.questions = questions;
         questionNumber = 0;
+        correctGuess = new boolean[length()];
     }
 
     /**
