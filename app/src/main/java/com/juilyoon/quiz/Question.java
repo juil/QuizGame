@@ -1,5 +1,7 @@
 package com.juilyoon.quiz;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
@@ -8,7 +10,6 @@ import java.util.ArrayList;
 public class Question {
     protected String question;
     protected String[] answers;
-    protected ArrayList<String> answerList;
 
     /**
      * Constructor for Question class.
@@ -20,10 +21,6 @@ public class Question {
     public Question(String question, String[] answers) {
         this.question = question;
         this.answers = answers;
-        answerList.add(0, answers[0]);
-        for (int i=1; i < answers.length-1; i++) {
-            answerList.add(answers[i].toLowerCase());
-        }
     }
 
     public String getQuestion() {
@@ -36,6 +33,11 @@ public class Question {
      * @return boolean: whether guess is contained in the set of possible answers
      */
     public boolean isCorrect(String guess) {
-        return answerList.contains(guess.toLowerCase());
+        for (int i = 0; i < answers.length; i++) {
+            if (guess.toLowerCase().equals(answers[i].toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -45,9 +45,16 @@ public class MultipleChoice extends Question{
      */
     public boolean isCorrect(String[] guess) {
         // Check that guess is no more and no less than correctAnswers; catches 0 guess case
+        boolean contains;
         if (guess.length == answers.length) {
-            for (int i=0; i < answers.length; i++){
-                if (!answerList.contains(guess[i])) {
+            for (int a=0; a < answers.length; a++){
+                contains = false;
+                for (int g=0; g < guess.length; g++) {
+                    if (answers[a].toLowerCase().equals(guess[g].toLowerCase())) {
+                        contains = true;
+                    }
+                }
+                if (!contains) {
                     return false;
                 }
             }
