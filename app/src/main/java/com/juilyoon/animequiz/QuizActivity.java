@@ -1,10 +1,13 @@
 package com.juilyoon.animequiz;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -24,6 +27,8 @@ public class QuizActivity extends AppCompatActivity {
     RadioGroup singleMultipleChoice;
     ListView multiMultipleChoice;
     EditText textAnswer;
+    // Keyboard settings
+    View keyboard;
 
 
     @Override
@@ -49,6 +54,8 @@ public class QuizActivity extends AppCompatActivity {
     public void nextQuestion(View view) {
         clearQuestion();
         currentQuestion = quiz.nextQuestion();
+        // Hide keyboard
+        keyboard = view;
         loadQuestion(currentQuestion);
         // When player has reached final question
         if (quiz.getQuestionNumber() == quiz.length()-1) {
@@ -65,8 +72,12 @@ public class QuizActivity extends AppCompatActivity {
     private void loadQuestion(Question question) {
         questionView.setText(question.getQuestion());
         if (question instanceof MultipleChoice) {
+            closeKeyboard(keyboard.getWindowToken());
             if (((MultipleChoice) question).isSingleChoice()) {
                 singleMultipleChoice.setVisibility(View.VISIBLE);
+            }
+            else {
+                multiMultipleChoice.setVisibility(View.VISIBLE);
             }
         }
     }
@@ -86,5 +97,11 @@ public class QuizActivity extends AppCompatActivity {
         startActivity(intent);
         // Display score in toast
         Toast.makeText(getApplicationContext(), "You finished!", Toast.LENGTH_LONG).show();
+    }
+
+    private void closeKeyboard(IBinder windowToken) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
+        Log.v("QuizActivity", "Hide keyboard.");
     }
 }
