@@ -27,9 +27,9 @@
         android:text="@string/next"/>
     // Multiple Choice (One Correct Answer) Layer
     <RadioGroup
-        android:id="@+id/multiple_choice_single"
+        android:id="@+id/single_multipleChoice"
         style="@style/AnswerOptions"
-        android:visibility="visible">
+        android:visibility="gone">
         <RadioButton
             android:id="@+id/option1"
             style="@style/Choice"
@@ -47,9 +47,19 @@
             style="@style/Choice"
             android:text="D. I don't know"/>
     </RadioGroup>
-    <LinearLayout
+    // Multiple Choice (Multiple Correct Answers) Layer
+    <ListView
+        android:id="@+id/multi_multipleChoice"
         style="@style/AnswerOptions"
         android:visibility="gone">
 
-    </LinearLayout>
+    </ListView>
+    // Text input Layer
+    <EditText
+        android:id="@+id/text_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/next_button"
+        android:layout_margin="16dp"
+        android:hint="@string/answer"/>
 </RelativeLayout>

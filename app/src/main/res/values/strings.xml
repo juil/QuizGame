@@ -2,6 +2,7 @@
     <string name="app_name">Anime Quiz</string>
     <string name="choose_quiz">Select a quiz:</string>
     <string name="next">Next Question</string>
+    <string name="answer">Answer</string>
     <!-- Quiz Name -->
     <string name="quiz_fma_title">Full Metal Alchemist</string>
     <string name="quiz_fma_description">Test your knowledge of Full Metal Alchemist.</string>
