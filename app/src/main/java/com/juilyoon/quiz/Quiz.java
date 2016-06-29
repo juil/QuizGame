@@ -7,9 +7,11 @@ import java.util.Queue;
  */
 public class Quiz {
     private Question[] questions;
+    private int currentQuestion;
 
     public Quiz(Question[] questions) {
         this.questions = questions;
+        currentQuestion = 0;
     }
 
     /**
@@ -27,6 +29,20 @@ public class Quiz {
                 question = (MultipleChoice) questions[i];
                 questions[i] = question.randomizeOptions();
             }
+        }
+    }
+
+    /**
+     * nextQuestion iterates to the next question
+     * @return Next question in quiz or null at the end of the quiz
+     */
+    public Question nextQuestion() {
+        currentQuestion++;
+        if (currentQuestion < length()) {
+            return questions[currentQuestion];
+        }
+        else {
+            return null;
         }
     }
 }
