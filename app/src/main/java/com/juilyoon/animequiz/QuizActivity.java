@@ -22,21 +22,24 @@ import android.widget.Toast;
 
 import com.juilyoon.quiz.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class QuizActivity extends AppCompatActivity {
     // Question data
     private Question currentQuestion;
     private Quiz quiz;
     // Question views
-    TextView questionNum;
-    TextView questionView;
-    RadioGroup singleMultipleChoice;
-    RadioButton radio1, radio2, radio3, radio4;
-    LinearLayout multiMultipleChoice;
-    ArrayAdapter<String> adapter; // For populating the ListView
-    CheckBox check1, check2, check3, check4;
-    EditText textAnswer;
+    private TextView questionNum;
+    private TextView questionView;
+    private RadioGroup singleMultipleChoice;
+    private RadioButton radio1, radio2, radio3, radio4;
+    private LinearLayout multiMultipleChoice;
+    private ArrayAdapter<String> adapter; // For populating the ListView
+    private CheckBox check1, check2, check3, check4;
+    private EditText textAnswer;
     // Keyboard settings
-    View keyboard;
+    private View keyboard;
 
 
     @Override
@@ -64,7 +67,8 @@ public class QuizActivity extends AppCompatActivity {
         MultipleChoice q2 = new MultipleChoice("Which humonculos has the ability to transform?",
                                                 new String[]{"Envy"}, new String[]{"Envy", "Wrath", "Greed", "Lust"});
         MultipleChoice q3 = new MultipleChoice("Whom of the following are state alchemists?",
-                                                new String[]{"Roy Mustang", "Edward Elric"}, new String[]{"Roy Mustang", "Edward Elric", "Riza Hawkeye", "Alphonse Elric"});
+                                                new String[]{"Roy Mustang", "Edward Elric"},
+                                                new String[]{"Roy Mustang", "Edward Elric", "Riza Hawkeye", "Alphonse Elric"});
         quiz = new Quiz(new Question[]{q1, q2, q3});
 
         // Load first question
@@ -74,13 +78,31 @@ public class QuizActivity extends AppCompatActivity {
     /**
      * checkAnswer() calls appropriate Quiz checkAnswer function and passes appropriate parameteres
      */
-    public void checkAnswer() {
+    private void checkAnswer() {
         if (currentQuestion instanceof MultipleChoice) {
-            quiz.checkAnswer(new String[]{}); // #TODO: Collect selection
+            if (((MultipleChoice) currentQuestion).isSingleChoice()){
+                RadioButton selection = (RadioButton) findViewById(singleMultipleChoice.getCheckedRadioButtonId());
+                quiz.checkAnswer(new String[]{selection.getText().toString()});
+            }
+            else {
+                quiz.checkAnswer(getCheckboxSelections(currentQuestion));
+            }
         }
         else {
             quiz.checkAnswer(textAnswer.getText().toString());
         }
+    }
+
+    private String[] getCheckboxSelections(Question question) {
+        CheckBox[] options = new CheckBox[]{check1, check2, check3, check4};
+        ArrayList<String> selectionList = new ArrayList<>();
+        for (int i = 0; i < options.length; i++) {
+            if (options[i].isChecked()) {
+                selectionList.add(options[i].getText().toString());
+            }
+        }
+        String[] selection = new String[selectionList.size()];
+        return selectionList.toArray(selection);
     }
 
     public void nextQuestion(View view) {
