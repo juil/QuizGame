@@ -1,13 +1,16 @@
 package com.juilyoon.animequiz;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.juilyoon.quiz.*;
 
@@ -75,6 +78,13 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void finishQuiz() {
-
+        Log.v("QuizActivity", "Quiz completed.");
+        // Go back to quiz directory
+        setContentView(R.layout.activity_directory);
+        Intent intent = new Intent(this, DirectoryActivity.class);
+        Log.v("QuizActivity", "Return to directory.");
+        startActivity(intent);
+        // Display score in toast
+        Toast.makeText(getApplicationContext(), "You finished!", Toast.LENGTH_LONG).show();
     }
 }
