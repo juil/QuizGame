@@ -1,17 +1,15 @@
 package com.juilyoon.quiz;
 
-import java.util.Queue;
-
 /**
  * Created by juil on 16-06-27.
  */
 public class Quiz {
     private Question[] questions;
-    private int currentQuestion;
+    private int questionNumber;
 
     public Quiz(Question[] questions) {
         this.questions = questions;
-        currentQuestion = 0;
+        questionNumber = 0;
     }
 
     /**
@@ -20,6 +18,10 @@ public class Quiz {
      */
     public int length() {
         return questions.length;
+    }
+
+    public int getQuestionNumber() {
+        return questionNumber;
     }
 
     public void randomizeOptions() {
@@ -37,9 +39,9 @@ public class Quiz {
      * @return Next question in quiz or null at the end of the quiz
      */
     public Question nextQuestion() {
-        currentQuestion++;
-        if (currentQuestion < length()) {
-            return questions[currentQuestion];
+        questionNumber++;
+        if (questionNumber < length()) {
+            return questions[questionNumber];
         }
         else {
             return null;
