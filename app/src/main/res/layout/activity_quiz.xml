@@ -47,7 +47,7 @@
     <LinearLayout
         android:id="@+id/multi_multipleChoice"
         style="@style/AnswerOptions"
-        android:visibility="visible">
+        android:visibility="gone">
         <CheckBox
             android:id="@+id/checkBox1"
             style="@style/Choice" />

@@ -30,10 +30,10 @@ public class QuizActivity extends AppCompatActivity {
     TextView questionNum;
     TextView questionView;
     RadioGroup singleMultipleChoice;
-    RadioButton r1, r2, r3, r4;
+    RadioButton radio1, radio2, radio3, radio4;
     LinearLayout multiMultipleChoice;
     ArrayAdapter<String> adapter; // For populating the ListView
-    CheckBox c1, c2, c3, c4;
+    CheckBox check1, check2, check3, check4;
     EditText textAnswer;
     // Keyboard settings
     View keyboard;
@@ -48,8 +48,15 @@ public class QuizActivity extends AppCompatActivity {
         questionNum = (TextView) findViewById(R.id.question_number);
         questionView = (TextView) findViewById(R.id.question_text);
         singleMultipleChoice = (RadioGroup) findViewById(R.id.single_multipleChoice);
-        r1 = (RadioButton) findViewById(R.id.radioButton1);
+        radio1 = (RadioButton) findViewById(R.id.radioButton1);
+        radio2 = (RadioButton) findViewById(R.id.radioButton2);
+        radio3 = (RadioButton) findViewById(R.id.radioButton3);
+        radio4 = (RadioButton) findViewById(R.id.radioButton4);
         multiMultipleChoice = (LinearLayout) findViewById(R.id.multi_multipleChoice);
+        check1 = (CheckBox) findViewById(R.id.checkBox1);
+        check2 = (CheckBox) findViewById(R.id.checkBox2);
+        check3 = (CheckBox) findViewById(R.id.checkBox3);
+        check4 = (CheckBox) findViewById(R.id.checkBox4);
         textAnswer = (EditText) findViewById(R.id.text_answer);
 
         // Example quiz
@@ -84,11 +91,19 @@ public class QuizActivity extends AppCompatActivity {
         questionView.setText(question.getQuestion());
         if (question instanceof MultipleChoice) {
             closeKeyboard(keyboard.getWindowToken());
+            String[] options = ((MultipleChoice) question).getOptions();
             if (((MultipleChoice) question).isSingleChoice()) {
+                radio1.setText(options[0]);
+                radio2.setText(options[1]);
+                radio3.setText(options[2]);
+                radio4.setText(options[3]);
                 singleMultipleChoice.setVisibility(View.VISIBLE);
             }
             else { // More than one choice needed for correct answer
-
+                check1.setText(options[0]);
+                check2.setText(options[1]);
+                check3.setText(options[2]);
+                check4.setText(options[3]);
                 multiMultipleChoice.setVisibility(View.VISIBLE);
             }
         }
