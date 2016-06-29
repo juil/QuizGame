@@ -35,6 +35,14 @@ public class Quiz {
     }
 
     /**
+     * getQuestion returns the current question of the quiz
+     * @return Question: the current question
+     */
+    public Question getQuestion() {
+        return questions[questionNumber];
+    }
+
+    /**
      * nextQuestion iterates to the next question
      * @return Next question in quiz or null at the end of the quiz
      */

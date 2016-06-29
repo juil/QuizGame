@@ -66,6 +66,9 @@ public class QuizActivity extends AppCompatActivity {
         MultipleChoice q3 = new MultipleChoice("Whom of the following are state alchemists?",
                                                 new String[]{"Roy Mustang", "Edward Elric"}, new String[]{"Roy Mustang", "Edward Elric", "Riza Hawkeye", "Alphonse Elric"});
         quiz = new Quiz(new Question[]{q1, q2, q3});
+
+        // Load first question
+        loadQuestion(quiz.getQuestion());
     }
 
     public void nextQuestion(View view) {
@@ -112,14 +115,16 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
-    private void loadOptions(MultipleChoice question){
-
-    }
-
     private void clearQuestion() {
         singleMultipleChoice.setVisibility(View.GONE);
+        singleMultipleChoice.clearCheck();
         multiMultipleChoice.setVisibility(View.GONE);
+        check1.setChecked(false);
+        check2.setChecked(false);
+        check3.setChecked(false);
+        check4.setChecked(false);
         textAnswer.setVisibility(View.GONE);
+        textAnswer.setText("");
     }
 
     private void finishQuiz() {
