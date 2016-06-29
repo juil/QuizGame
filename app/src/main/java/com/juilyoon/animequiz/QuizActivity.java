@@ -19,10 +19,10 @@ import com.juilyoon.quiz.*;
 
 public class QuizActivity extends AppCompatActivity {
     // Question data
-    private int questionNum = 1;
     private Question currentQuestion;
     private Quiz quiz;
     // Question views
+    TextView questionNum;
     TextView questionView;
     RadioGroup singleMultipleChoice;
     ListView multiMultipleChoice;
@@ -37,6 +37,7 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         // Question views
+        questionNum = (TextView) findViewById(R.id.question_number);
         questionView = (TextView) findViewById(R.id.question_text);
         singleMultipleChoice = (RadioGroup) findViewById(R.id.single_multipleChoice);
         multiMultipleChoice = (ListView) findViewById(R.id.multi_multipleChoice);
@@ -58,7 +59,7 @@ public class QuizActivity extends AppCompatActivity {
         keyboard = view;
         loadQuestion(currentQuestion);
         // When player has reached final question
-        if (quiz.getQuestionNumber() == quiz.length()-1) {
+        if (quiz.getQuestionNumber() == quiz.length()) {
             Button finish = (Button) findViewById(R.id.next_button);
             finish.setText(R.string.finish);
             finish.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +71,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void loadQuestion(Question question) {
+        questionNum.setText(getString(R.string.questionNum) + " " + quiz.getQuestionNumber() + ":");
         questionView.setText(question.getQuestion());
         if (question instanceof MultipleChoice) {
             closeKeyboard(keyboard.getWindowToken());
@@ -79,6 +81,9 @@ public class QuizActivity extends AppCompatActivity {
             else {
                 multiMultipleChoice.setVisibility(View.VISIBLE);
             }
+        }
+        else {
+            textAnswer.setVisibility(View.VISIBLE);
         }
     }
 

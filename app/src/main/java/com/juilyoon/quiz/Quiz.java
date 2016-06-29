@@ -21,7 +21,7 @@ public class Quiz {
     }
 
     public int getQuestionNumber() {
-        return questionNumber;
+        return questionNumber + 1;
     }
 
     public void randomizeOptions() {
