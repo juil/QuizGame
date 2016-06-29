@@ -25,7 +25,7 @@ public class MultipleChoice extends Question{
      *
      * Fisher-Yates algorithm taken from http://stackoverflow.com/a/18456998/745776
      */
-    public void randomizeOptions() {
+    public MultipleChoice randomizeOptions() {
         int index;
         String temp;
         Random random = new Random();
@@ -35,6 +35,7 @@ public class MultipleChoice extends Question{
             answers[index] = answers[i];
             answers[i] = temp;
         }
+        return this;
     }
 
     /**

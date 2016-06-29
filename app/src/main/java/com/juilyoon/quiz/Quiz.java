@@ -12,8 +12,22 @@ public class Quiz {
         this.questions = questions;
     }
 
-    public void randomizeOptions(Question question) {
+    /**
+     * length returns the number of questions in the quiz
+     * @return int: the number of questions
+     */
+    public int length() {
+        return questions.length;
+    }
 
+    public void randomizeOptions() {
+        MultipleChoice question;
+        for (int i = 0; i < length(); i++) {
+            if (questions[i] instanceof MultipleChoice) {
+                question = (MultipleChoice) questions[i];
+                questions[i] = question.randomizeOptions();
+            }
+        }
     }
 }
 
