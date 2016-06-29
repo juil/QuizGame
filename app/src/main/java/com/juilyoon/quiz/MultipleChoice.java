@@ -57,4 +57,12 @@ public class MultipleChoice extends Question{
             return false;
         }
     }
+
+    /**
+     * isSingleChoice checks if MultipleChoice has only one option or more
+     * @return boolean: if there is only one answer or not
+     */
+    public boolean isSingleChoice() {
+        return (answers.length == 1);
+    }
 }
