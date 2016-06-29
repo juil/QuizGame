@@ -15,11 +15,11 @@
         <TextView
             android:id="@+id/question_number"
             style="@style/QuestionNum"
-            android:text="Question 1:"/>
+            android:text="Question #:"/>
         <TextView
             android:id="@+id/question_text"
             style="@style/QuestionText"
-            android:text="This is a question?"/>
+            android:text="Question"/>
     </LinearLayout>
     <Button
         android:id="@+id/next_button"
