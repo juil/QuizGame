@@ -31,29 +31,36 @@
         style="@style/AnswerOptions"
         android:visibility="gone">
         <RadioButton
-            android:id="@+id/option1"
-            style="@style/Choice"
-            android:text="A. Yes it is."/>
+            android:id="@+id/radioButton1"
+            style="@style/Choice"/>
         <RadioButton
-            android:id="@+id/option2"
-            style="@style/Choice"
-            android:text="B. Maybe."/>
+            android:id="@+id/radioButton2"
+            style="@style/Choice"/>
         <RadioButton
-            android:id="@+id/option3"
-            style="@style/Choice"
-            android:text="C. No"/>
+            android:id="@+id/radioButton3"
+            style="@style/Choice"/>
         <RadioButton
-            android:id="@+id/option4"
-            style="@style/Choice"
-            android:text="D. I don't know"/>
+            android:id="@+id/radioButton4"
+            style="@style/Choice"/>
     </RadioGroup>
     // Multiple Choice (Multiple Correct Answers) Layer
-    <ListView
+    <LinearLayout
         android:id="@+id/multi_multipleChoice"
         style="@style/AnswerOptions"
-        android:visibility="gone">
-
-    </ListView>
+        android:visibility="visible">
+        <CheckBox
+            android:id="@+id/checkBox1"
+            style="@style/Choice" />
+        <CheckBox
+            android:id="@+id/checkBox2"
+            style="@style/Choice" />
+        <CheckBox
+            android:id="@+id/checkBox3"
+            style="@style/Choice" />
+        <CheckBox
+            android:id="@+id/checkBox4"
+            style="@style/Choice" />
+    </LinearLayout>
     // Text input Layer
     <EditText
         android:id="@+id/text_answer"
@@ -61,5 +68,6 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/next_button"
         android:layout_margin="16dp"
-        android:hint="@string/answer"/>
+        android:hint="@string/answer"
+        android:visibility="invisible"/>
 </RelativeLayout>

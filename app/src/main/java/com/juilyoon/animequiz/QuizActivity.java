@@ -8,9 +8,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +30,10 @@ public class QuizActivity extends AppCompatActivity {
     TextView questionNum;
     TextView questionView;
     RadioGroup singleMultipleChoice;
-    ListView multiMultipleChoice;
+    RadioButton r1, r2, r3, r4;
+    LinearLayout multiMultipleChoice;
+    ArrayAdapter<String> adapter; // For populating the ListView
+    CheckBox c1, c2, c3, c4;
     EditText textAnswer;
     // Keyboard settings
     View keyboard;
@@ -40,7 +48,8 @@ public class QuizActivity extends AppCompatActivity {
         questionNum = (TextView) findViewById(R.id.question_number);
         questionView = (TextView) findViewById(R.id.question_text);
         singleMultipleChoice = (RadioGroup) findViewById(R.id.single_multipleChoice);
-        multiMultipleChoice = (ListView) findViewById(R.id.multi_multipleChoice);
+        r1 = (RadioButton) findViewById(R.id.radioButton1);
+        multiMultipleChoice = (LinearLayout) findViewById(R.id.multi_multipleChoice);
         textAnswer = (EditText) findViewById(R.id.text_answer);
 
         // Example quiz
@@ -78,13 +87,18 @@ public class QuizActivity extends AppCompatActivity {
             if (((MultipleChoice) question).isSingleChoice()) {
                 singleMultipleChoice.setVisibility(View.VISIBLE);
             }
-            else {
+            else { // More than one choice needed for correct answer
+
                 multiMultipleChoice.setVisibility(View.VISIBLE);
             }
         }
         else {
             textAnswer.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void loadOptions(MultipleChoice question){
+
     }
 
     private void clearQuestion() {
