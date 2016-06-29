@@ -6,6 +6,7 @@ package com.juilyoon.quiz;
 public class Quiz {
     private Question[] questions;
     private int questionNumber;
+    private boolean[] correctGuess = new boolean[length()];
 
     public Quiz(Question[] questions) {
         this.questions = questions;
@@ -24,6 +25,16 @@ public class Quiz {
         return questionNumber + 1;
     }
 
+    public int getScore() {
+        int score = 0;
+        for (int i=0; i < questionNumber; i++) {
+            if (correctGuess[i]) {
+                score++;
+            }
+        }
+        return score;
+    }
+
     public void randomizeOptions() {
         MultipleChoice question;
         for (int i = 0; i < length(); i++) {
@@ -32,6 +43,12 @@ public class Quiz {
                 questions[i] = question.randomizeOptions();
             }
         }
+    }
+
+    public boolean checkAnswer(String guess) {
+        boolean isCorrect = getQuestion().isCorrect(guess);
+        correctGuess[questionNumber] = isCorrect;
+        return isCorrect;
     }
 
     /**
