@@ -71,7 +71,20 @@ public class QuizActivity extends AppCompatActivity {
         loadQuestion(quiz.getQuestion());
     }
 
+    /**
+     * checkAnswer() calls appropriate Quiz checkAnswer function and passes appropriate parameteres
+     */
+    public void checkAnswer() {
+        if (currentQuestion instanceof MultipleChoice) {
+            quiz.checkAnswer(new String[]{}); // #TODO: Collect selection
+        }
+        else {
+            quiz.checkAnswer(textAnswer.getText().toString());
+        }
+    }
+
     public void nextQuestion(View view) {
+        checkAnswer();
         clearQuestion();
         currentQuestion = quiz.nextQuestion();
         // Hide keyboard

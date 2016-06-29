@@ -45,10 +45,26 @@ public class Quiz {
         }
     }
 
+    /**
+     * checkAnswer for text input answer
+     * @param guess Text input answer.
+     * @return
+     */
     public boolean checkAnswer(String guess) {
-        boolean isCorrect = getQuestion().isCorrect(guess);
-        correctGuess[questionNumber] = isCorrect;
-        return isCorrect;
+        boolean correct = getQuestion().isCorrect(guess);
+        correctGuess[questionNumber] = correct;
+        return correct;
+    }
+
+    /**
+     * checkAnswer for multiple choice
+     * @param guesses Choices selected in radio group or check boxes
+     * @return
+     */
+    public boolean checkAnswer(String[] guesses) {
+        boolean correct = ((MultipleChoice) getQuestion()).isCorrect(guesses);
+        correctGuess[questionNumber] = correct;
+        return correct;
     }
 
     /**
