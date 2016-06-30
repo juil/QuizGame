@@ -130,6 +130,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void loadQuestion(Question question) {
+        Log.v("QuizActivity", "Question #" + quiz.getQuestionNumber());
         questionNum.setText(getString(R.string.questionNum) + " " + quiz.getQuestionNumber() + ":");
         questionView.setText(question.getQuestion());
         if (question instanceof MultipleChoice) {

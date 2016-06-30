@@ -1,5 +1,7 @@
 package com.juilyoon.quiz;
 
+import android.util.Log;
+
 /**
  * Created by juil on 16-06-27.
  */

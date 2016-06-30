@@ -35,9 +35,11 @@ public class Question {
     public boolean isCorrect(String guess) {
         for (int i = 0; i < answers.length; i++) {
             if (guess.toLowerCase().equals(answers[i].toLowerCase())) {
+                Log.v("Question", "Answer is correct.");
                 return true;
             }
         }
+        Log.v("Question", "Answer is incorrect.");
         return false;
     }
 }

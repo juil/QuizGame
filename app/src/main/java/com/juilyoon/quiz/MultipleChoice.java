@@ -1,5 +1,7 @@
 package com.juilyoon.quiz;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -55,12 +57,15 @@ public class MultipleChoice extends Question{
                     }
                 }
                 if (!contains) {
+                    Log.v("MultipleChoice", "Answer was incorrect.");
                     return false;
                 }
             }
+            Log.v("MultipleChoice", "Multiple choice answer was correct.");
             return true;
         }
         else {
+            Log.v("MultipleChoice", "Answer was incorrect.");
             return false;
         }
     }
