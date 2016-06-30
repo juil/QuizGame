@@ -83,6 +83,7 @@ public class Quiz {
      * @return Next question in quiz or null at the end of the quiz
      */
     public Question nextQuestion() {
+        Log.v("Quiz", "Score: " + getScore() + "/" + questionNumber);
         questionNumber++;
         if (questionNumber < length()) {
             return questions[questionNumber];
