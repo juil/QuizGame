@@ -31,12 +31,13 @@ public class MultipleChoice extends Question{
         int index;
         String temp;
         Random random = new Random();
-        for (int i = answers.length - 1; i > 0; i--) {
+        for (int i = options.length - 1; i > 0; i--) {
             index = random.nextInt(i + 1);
-            temp = answers[index];
-            answers[index] = answers[i];
-            answers[i] = temp;
+            temp = options[index];
+            options[index] = options[i];
+            options[i] = temp;
         }
+        Log.v("MultipleChoice", "Option order randomized.");
         return this;
     }
 

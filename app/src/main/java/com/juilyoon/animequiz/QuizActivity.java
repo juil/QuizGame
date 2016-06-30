@@ -70,6 +70,7 @@ public class QuizActivity extends AppCompatActivity {
                                                 new String[]{"Roy Mustang", "Edward Elric"},
                                                 new String[]{"Roy Mustang", "Edward Elric", "Riza Hawkeye", "Alphonse Elric"});
         quiz = new Quiz(new Question[]{q1, q2, q3});
+        quiz.randomizeOptions();
 
         // Load first question
         loadQuestion(quiz.getQuestion());
