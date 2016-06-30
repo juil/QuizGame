@@ -117,14 +117,16 @@ public class QuizActivity extends AppCompatActivity {
 
     /**
      * nextQuestion(View view) iterates through questions[]
+     *
+     * Called in the nextButton style
+     *
      * @param view
      */
     public void nextQuestion(View view) {
         checkAnswer();
         clearQuestion();
         currentQuestion = quiz.nextQuestion();
-        // Hide keyboard
-        keyboard = view;
+        keyboard = view; // Set view to hide keyboard
         loadQuestion(currentQuestion);
         // When player has reached final question
         if (quiz.getQuestionNumber() == quiz.length()) {
@@ -144,7 +146,7 @@ public class QuizActivity extends AppCompatActivity {
         questionNum.setText(getString(R.string.questionNum) + " " + quiz.getQuestionNumber() + ":");
         questionView.setText(question.getQuestion());
         if (question instanceof MultipleChoice) {
-            closeKeyboard(keyboard.getWindowToken());
+            closeKeyboard(keyboard.getWindowToken()); // Hide keyboard
             String[] options = ((MultipleChoice) question).getOptions();
             if (((MultipleChoice) question).isSingleChoice()) {
                 radio1.setText(options[0]);
@@ -189,6 +191,10 @@ public class QuizActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "You finished! Your score was " + quiz.getScore() + "/" + quiz.length(), Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * Makes sure that soft keyboard doesn't get in the way of questions that don't need it.
+     * @param windowToken Pass in View.getWindowToken()
+     */
     private void closeKeyboard(IBinder windowToken) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
