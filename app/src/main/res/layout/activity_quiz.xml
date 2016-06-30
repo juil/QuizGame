@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/quiz_margin"
-    tools:context="com.juilyoon.animequiz.QuizActivity">
+    tools:context="com.juilyoon.quizgame.QuizActivity">
 
     <LinearLayout
         android:id="@+id/question_view"

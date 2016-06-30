@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Anime Quiz</string>
+    <string name="app_name">Quiz Game</string>
     <string name="choose_quiz">Select a quiz:</string>
     <string name="questionNum">Question</string>
     <string name="next">Next Question</string>

@@ -1,4 +1,4 @@
-package com.juilyoon.animequiz;
+package com.juilyoon.quizgame;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,13 +8,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -23,7 +21,6 @@ import android.widget.Toast;
 import com.juilyoon.quiz.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class QuizActivity extends AppCompatActivity {
     // Question data
@@ -63,13 +60,19 @@ public class QuizActivity extends AppCompatActivity {
         textAnswer = (EditText) findViewById(R.id.text_answer);
 
         // Example quiz
-        Question q1 = new Question("What is the most important law of alchemy?", new String[]{"The Law of Equivalent Exchange", "Equivalent Exchange"});
-        MultipleChoice q2 = new MultipleChoice("Which humonculos has the ability to transform?",
+        Question q1 = new Question("What is the most important law of alchemy?", new String[]{"The Law of Equivalent Exchange", "equivalent exchange"});
+        MultipleChoice q2 = new MultipleChoice("Which homunculus has the ability to transform?",
                                                 new String[]{"Envy"}, new String[]{"Envy", "Wrath", "Greed", "Lust"});
         MultipleChoice q3 = new MultipleChoice("Whom of the following are state alchemists?",
                                                 new String[]{"Roy Mustang", "Edward Elric"},
                                                 new String[]{"Roy Mustang", "Edward Elric", "Riza Hawkeye", "Alphonse Elric"});
-        quiz = new Quiz(new Question[]{q1, q2, q3});
+        MultipleChoice q4 = new MultipleChoice("Who is the author of the original Full Metal Alchemist manga?",
+                                                new String[]{"Hiromu Arakawa"},
+                                                new String[]{"Hiromu Arakawa", "Naoko Takeuchi", "Rumiko Takahashi", "Eiichiro Oda"});
+        MultipleChoice q5 = new MultipleChoice("What names did the ultimate antagonist go by throughout the series?",
+                                                new String[]{"Oto-sama", "The Dwarf in the Flask", "Homunculus"},
+                                                new String[]{"Oto-sama", "The Dwarf in the Flask", "Homunculus", "Xerxes"});
+        quiz = new Quiz(new Question[]{q1, q2, q3, q4, q5});
         quiz.randomizeOptions();
 
         // Load first question

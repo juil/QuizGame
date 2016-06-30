@@ -1,4 +1,4 @@
-package com.juilyoon.animequiz;
+package com.juilyoon.quizgame;
 
 import org.junit.Test;
 

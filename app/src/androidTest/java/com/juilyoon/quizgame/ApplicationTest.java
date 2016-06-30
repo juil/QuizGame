@@ -1,4 +1,4 @@
-package com.juilyoon.animequiz;
+package com.juilyoon.quizgame;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
