@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".QuizActivity"
-                    android:windowSoftInputMode="adjustResize|stateHidden">
+                    android:windowSoftInputMode="adjustResize|stateHidden"
+                    android:screenOrientation="portrait">
         </activity>
     </application>
 
