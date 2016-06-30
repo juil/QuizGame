@@ -81,8 +81,14 @@ public class QuizActivity extends AppCompatActivity {
     private void checkAnswer() {
         if (currentQuestion instanceof MultipleChoice) {
             if (((MultipleChoice) currentQuestion).isSingleChoice()){
-                RadioButton selection = (RadioButton) findViewById(singleMultipleChoice.getCheckedRadioButtonId());
-                quiz.checkAnswer(new String[]{selection.getText().toString()});
+                int radioId = singleMultipleChoice.getCheckedRadioButtonId();
+                if (radioId == -1) {
+                    quiz.checkAnswer(new String[]{});
+                }
+                else {
+                    RadioButton selection = (RadioButton) findViewById(radioId);
+                    quiz.checkAnswer(new String[]{selection.getText().toString()});
+                }
             }
             else {
                 quiz.checkAnswer(getCheckboxSelections(currentQuestion));
@@ -169,14 +175,14 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void finishQuiz() {
-        Log.v("QuizActivity", "Quiz completed.");
+        Log.v("QuizActivity", "Quiz completed with score " + quiz.getScore() + "/" + quiz.length());
         // Go back to quiz directory
         setContentView(R.layout.activity_directory);
         Intent intent = new Intent(this, DirectoryActivity.class);
         Log.v("QuizActivity", "Return to directory.");
         startActivity(intent);
         // Display score in toast
-        Toast.makeText(getApplicationContext(), "You finished!", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "You finished! Your score was " + quiz.getScore() + "/" + quiz.length(), Toast.LENGTH_LONG).show();
     }
 
     private void closeKeyboard(IBinder windowToken) {
