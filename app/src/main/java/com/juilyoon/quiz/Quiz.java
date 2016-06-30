@@ -8,7 +8,7 @@ import android.util.Log;
 public class Quiz {
     private Question[] questions;
     private int questionNumber;
-    private boolean[] correctGuess;
+    private boolean[] correctGuess; //Keeps track of correct answers
 
     public Quiz(Question[] questions) {
         this.questions = questions;
@@ -30,7 +30,7 @@ public class Quiz {
 
     public int getScore() {
         int score = 0;
-        for (int i=0; i < questionNumber; i++) {
+        for (int i=0; i < getQuestionNumber(); i++) {
             if (correctGuess[i]) {
                 score++;
             }
@@ -83,7 +83,7 @@ public class Quiz {
      * @return Next question in quiz or null at the end of the quiz
      */
     public Question nextQuestion() {
-        Log.v("Quiz", "Score: " + getScore() + "/" + questionNumber);
+        Log.v("Quiz", "Score: " + getScore() + "/" + getQuestionNumber());
         questionNumber++;
         if (questionNumber < length()) {
             return questions[questionNumber];
