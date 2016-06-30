@@ -14,18 +14,16 @@
         android:orientation="vertical">
         <TextView
             android:id="@+id/question_number"
-            style="@style/QuestionNum"
-            android:text="Question #:"/>
+            style="@style/QuestionNum" />
         <TextView
             android:id="@+id/question_text"
-            style="@style/QuestionText"
-            android:text="Question"/>
+            style="@style/QuestionText"/>
     </LinearLayout>
     <Button
         android:id="@+id/next_button"
         style="@style/NextButton"
         android:text="@string/next"/>
-    // Multiple Choice (One Correct Answer) Layer
+    <!--Multiple Choice (One Correct Answer) Layer-->
     <RadioGroup
         android:id="@+id/single_multipleChoice"
         style="@style/AnswerOptions"
@@ -43,7 +41,7 @@
             android:id="@+id/radioButton4"
             style="@style/Choice"/>
     </RadioGroup>
-    // Multiple Choice (Multiple Correct Answers) Layer
+    <!--Multiple Choice (Multiple Correct Answers) Layer-->
     <LinearLayout
         android:id="@+id/multi_multipleChoice"
         style="@style/AnswerOptions"
@@ -61,7 +59,7 @@
             android:id="@+id/checkBox4"
             style="@style/Choice" />
     </LinearLayout>
-    // Text input Layer
+    <!--Text input Layer-->
     <EditText
         android:id="@+id/text_answer"
         android:layout_width="match_parent"
