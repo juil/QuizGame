@@ -8,5 +8,5 @@
     <!-- Quiz Name -->
     <string name="quiz_fma_title">Full Metal Alchemist</string>
     <string name="quiz_fma_description">Test your knowledge of Full Metal Alchemist.</string>
-    <string name="quiz_fma_difficulty">Difficulty: * *</string>
+    <string name="quiz_fma_difficulty">Difficulty: Medium</string>
 </resources>
