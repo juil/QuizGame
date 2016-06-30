@@ -105,6 +105,10 @@ public class QuizActivity extends AppCompatActivity {
         return selectionList.toArray(selection);
     }
 
+    /**
+     * nextQuestion(View view) iterates through questions[]
+     * @param view
+     */
     public void nextQuestion(View view) {
         checkAnswer();
         clearQuestion();
@@ -118,6 +122,7 @@ public class QuizActivity extends AppCompatActivity {
             finish.setText(R.string.finish);
             finish.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
+                    checkAnswer();
                     finishQuiz();
                 }
             });
@@ -176,6 +181,5 @@ public class QuizActivity extends AppCompatActivity {
     private void closeKeyboard(IBinder windowToken) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
-        Log.v("QuizActivity", "Hide keyboard.");
     }
 }
