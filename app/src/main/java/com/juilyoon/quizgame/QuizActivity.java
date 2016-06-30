@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class QuizActivity extends AppCompatActivity {
     private Question currentQuestion;
     private Quiz quiz;
     // Question views
+    private ProgressBar progressBar;
     private TextView questionNum;
     private TextView questionView;
     private RadioGroup singleMultipleChoice;
@@ -45,6 +47,7 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         // Question views
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         questionNum = (TextView) findViewById(R.id.question_number);
         questionView = (TextView) findViewById(R.id.question_text);
         singleMultipleChoice = (RadioGroup) findViewById(R.id.single_multipleChoice);
@@ -73,9 +76,12 @@ public class QuizActivity extends AppCompatActivity {
                                                 new String[]{"Oto-sama", "The Dwarf in the Flask", "Homunculus"},
                                                 new String[]{"Oto-sama", "The Dwarf in the Flask", "Homunculus", "Xerxes"});
         quiz = new Quiz(new Question[]{q1, q2, q3, q4, q5});
-        quiz.randomizeOptions();
 
+        // Set progress bar
+        progressBar.setMax(quiz.length());
+        progressBar.setProgress(1);
         // Load first question
+        quiz.randomizeOptions();
         loadQuestion(quiz.getQuestion());
     }
 
@@ -143,6 +149,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private void loadQuestion(Question question) {
         Log.v("QuizActivity", "Question #" + quiz.getQuestionNumber());
+        progressBar.setProgress(quiz.getQuestionNumber());
         questionNum.setText(getString(R.string.questionNum) + " " + quiz.getQuestionNumber() + ":");
         questionView.setText(question.getQuestion());
         if (question instanceof MultipleChoice) {
