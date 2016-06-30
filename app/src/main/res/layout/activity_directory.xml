@@ -31,7 +31,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="4dp">
+                    android:paddingLeft="4dp">
                     <TextView
                         android:id="@+id/quiz_fma_title"
                         style="@style/dir_quizTitle"
@@ -55,7 +55,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:text="10/10"/>
+                            android:text=""/>
                     </RelativeLayout>
                 </RelativeLayout>
             </LinearLayout>
